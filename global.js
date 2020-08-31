@@ -8,9 +8,9 @@ const global = {
   methods: {
     setTheme: async function () {
       if (this.$store.state.theme.isDark) {
-        await import("@/scss/colors/dark.scss");
+        await import("@/scss/bulmaConf/bulmaDark.scss");
       } else {
-        await import("@/scss/colors/light.scss");
+        await import("@/scss/bulmaConf/bulmaLight.scss");
       }
     },
   },

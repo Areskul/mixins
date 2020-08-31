@@ -6,6 +6,7 @@ const styles = {
     color: String,
     elevation: String,
     height: String,
+    width: String,
     rounded: Boolean,
     border: String,
     text: String,
@@ -44,7 +45,7 @@ const styles = {
     },
     setWidth: function () {
       let width = this.width;
-      this.$el.style.width = width;
+      this.$el.style.maxWidth = width;
     },
     setBorderRadius: function () {
       if (this.rounded) {

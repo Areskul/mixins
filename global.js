@@ -1,16 +1,8 @@
-/* 
-Must use this mixin on Vue first instance
-to get all colors generated from scss
-available in js as constantes. 
-*/
-
 const global = {
-  data: () => ({
-    colors: {},
-  }),
+  data: () => ({}),
   async mounted() {
     await this.setTheme();
-    //Musn't call a plugin (store) in mixins
+    //Musn't use a plugin (store) in mixins
     this.$store.dispatch("theme/setDark", false);
   },
   methods: {

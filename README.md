@@ -1,5 +1,4 @@
 # mixins
-Vue project
 Vue mixins for components shape, color and elevation(shadow).
 
 

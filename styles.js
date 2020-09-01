@@ -45,7 +45,7 @@ const styles = {
     },
     setWidth: function () {
       let width = this.width;
-      this.$el.style.maxWidth = width;
+      this.$el.style.minWidth = width;
     },
     setBorderRadius: function () {
       if (this.rounded) {

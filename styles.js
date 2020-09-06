@@ -1,4 +1,4 @@
-const styles = {
+export const styles = {
   props: {
     color: String,
     elevation: String,
@@ -59,4 +59,3 @@ const styles = {
     },
   },
 };
-export default styles;

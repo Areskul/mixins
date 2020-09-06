@@ -19,7 +19,6 @@ export const metaTheme = {
       fg = window
         .getComputedStyle(this.$root.$el)
         .getPropertyValue("--secondary");
-      console.log(fg);
       return { meta: [{ name: "theme-color", content: fg }] };
     }
   },

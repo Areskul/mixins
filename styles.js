@@ -1,7 +1,4 @@
 const styles = {
-  data: () => ({
-    colors: [],
-  }),
   props: {
     color: String,
     elevation: String,
@@ -21,39 +18,39 @@ const styles = {
     this.setBorderWidth();
   },
   methods: {
-    setColor: function () {
-      let color = `var(--${this.color})`;
+    setColor: function() {
+      const color = `var(--${this.color})`;
       this.$el.style.background = color;
     },
-    setText: function () {
+    setText: function() {
       if (this.text) {
-        let color = `var(--${this.text})`;
+        const color = `var(--${this.text})`;
         this.$el.style.color = color;
       } else {
-        let text = "ternary-lighten2";
-        let color = `var(--${text})`;
+        const text = "ternary-lighten2";
+        const color = `var(--${text})`;
         this.$el.style.color = color;
       }
     },
-    setElevation: function () {
-      let elevation = `var(--box${this.elevation})`;
+    setElevation: function() {
+      const elevation = `var(--box${this.elevation})`;
       this.$el.style.boxShadow = elevation;
     },
-    setHeight: function () {
-      let height = this.height;
+    setHeight: function() {
+      const height = this.height;
       this.$el.style.minHeight = height;
     },
-    setWidth: function () {
-      let width = this.width;
+    setWidth: function() {
+      const width = this.width;
       this.$el.style.minWidth = width;
     },
-    setBorderRadius: function () {
+    setBorderRadius: function() {
       if (this.rounded) {
-        let radius = `var(--border-radius)`;
+        const radius = `var(--border-radius)`;
         this.$el.style.borderRadius = radius;
       }
     },
-    setBorderWidth: function () {
+    setBorderWidth: function() {
       if (this.border) {
         this.$el.style.borderWidth = `var(--border-width)`;
         this.$el.style.borderStyle = "solid";

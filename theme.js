@@ -23,3 +23,33 @@ export const metaTheme = {
     }
   },
 };
+export const breakpoints = {
+  data: () => ({
+    isMobile: false,
+  }),
+  beforeDestroy() {
+    if (typeof window !== "undefined") {
+      window.removeEventListener("resize", this.onResize, { passive: true });
+    }
+  },
+  mounted() {
+    this.onResize();
+    window.addEventListener("resize", this.onResize, { passive: true });
+  },
+  methods: {
+    onResize() {
+      this.isMobile =
+        document.documentElement.clientWidth < this.breakpointValue("tablet");
+    },
+    breakpointValue(name) {
+      const start = 0;
+      const end = -2;
+      let value = window
+        .getComputedStyle(this.$root.$el)
+        .getPropertyValue(`--${name}`);
+      value = value.slice(start, end);
+      value = Number(value);
+      return value;
+    },
+  },
+};

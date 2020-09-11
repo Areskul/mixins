@@ -19,8 +19,12 @@ export const styles = {
   },
   methods: {
     setColor: function() {
-      const color = `var(--${this.color})`;
-      this.$el.style.background = color;
+      if (this.color) {
+        const color = `var(--${this.color})`;
+        this.$el.style.background = color;
+      } else {
+        return;
+      }
     },
     setText: function() {
       if (this.text) {
@@ -33,21 +37,29 @@ export const styles = {
       }
     },
     setElevation: function() {
-      const elevation = `var(--box${this.elevation})`;
-      this.$el.style.boxShadow = elevation;
+      if (this.elevation) {
+        const elevation = `var(--box${this.elevation})`;
+        this.$el.style.boxShadow = elevation;
+      } else {
+        return;
+      }
     },
     setHeight: function() {
       const height = this.height;
       this.$el.style.minHeight = height;
+      this.$el.style.maxHeight = height;
     },
     setWidth: function() {
       const width = this.width;
       this.$el.style.minWidth = width;
+      this.$el.style.maxWidth = width;
     },
     setBorderRadius: function() {
       if (this.rounded) {
         const radius = `var(--border-radius)`;
         this.$el.style.borderRadius = radius;
+      } else {
+        return;
       }
     },
     setBorderWidth: function() {

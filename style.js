@@ -1,21 +1,11 @@
-export const styles = {
+export const color = {
   props: {
     color: String,
-    elevation: String,
-    height: String,
-    width: String,
-    rounded: Boolean,
-    border: String,
     text: String,
   },
   mounted() {
     this.setColor();
     this.setText();
-    this.setElevation();
-    this.setHeight();
-    this.setWidth();
-    this.setBorderRadius();
-    this.setBorderWidth();
   },
   methods: {
     setColor: function() {
@@ -36,6 +26,16 @@ export const styles = {
         this.$el.style.color = color;
       }
     },
+  },
+};
+export const elevation = {
+  props: {
+    elevation: String,
+  },
+  mounted() {
+    this.setElevation();
+  },
+  methods: {
     setElevation: function() {
       if (this.elevation) {
         const elevation = `var(--box${this.elevation})`;
@@ -44,16 +44,19 @@ export const styles = {
         return;
       }
     },
-    setHeight: function() {
-      const height = this.height;
-      this.$el.style.minHeight = height;
-      this.$el.style.maxHeight = height;
-    },
-    setWidth: function() {
-      const width = this.width;
-      this.$el.style.minWidth = width;
-      this.$el.style.maxWidth = width;
-    },
+  },
+};
+
+export const border = {
+  props: {
+    border: String,
+    rounded: Boolean,
+  },
+  mounted() {
+    this.setBorderRadius();
+    this.setBorderWidth();
+  },
+  methods: {
     setBorderRadius: function() {
       if (this.rounded) {
         const radius = `var(--border-radius)`;
@@ -68,6 +71,28 @@ export const styles = {
         this.$el.style.borderStyle = "solid";
         this.$el.style.borderColor = `var(--${this.border})`;
       }
+    },
+  },
+};
+export const dimension = {
+  props: {
+    height: String,
+    width: String,
+  },
+  mounted() {
+    this.setHeight();
+    this.setWidth();
+  },
+  methods: {
+    setHeight: function() {
+      const height = this.height;
+      this.$el.style.minHeight = height;
+      this.$el.style.maxHeight = height;
+    },
+    setWidth: function() {
+      const width = this.width;
+      this.$el.style.minWidth = width;
+      this.$el.style.maxWidth = width;
     },
   },
 };

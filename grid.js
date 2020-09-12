@@ -22,7 +22,10 @@ export const position = {
 };
 export const breakpoints = {
   data: () => ({
-    isMobile: false,
+    xs: false,
+    sm: false,
+    md: false,
+    lg: false,
   }),
   beforeDestroy() {
     if (typeof window !== "undefined") {
@@ -35,16 +38,19 @@ export const breakpoints = {
   },
   methods: {
     onResize() {
-      this.isMobile =
-        document.documentElement.clientWidth < this.breakpointValue("tablet");
+      this.xs =
+        document.documentElement.clientWidth <= this.breakpointValue("xs");
+      this.sm =
+        document.documentElement.clientWidth <= this.breakpointValue("sm");
+      this.md =
+        document.documentElement.clientWidth <= this.breakpointValue("md");
+      this.lg =
+        document.documentElement.clientWidth <= this.breakpointValue("lg");
     },
     breakpointValue(name) {
-      const start = 0;
-      const end = -2;
       let value = window
         .getComputedStyle(this.$root.$el)
         .getPropertyValue(`--${name}`);
-      value = value.slice(start, end);
       value = Number(value);
       return value;
     },

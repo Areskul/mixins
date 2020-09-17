@@ -1,25 +1,25 @@
-export const position = {
-  props: {
-    left: Boolean,
-    right: Boolean,
-    center: Boolean,
-  },
-  mounted() {
-    this.setPosition();
-  },
-  methods: {
-    setPosition: function() {
-      const origin = this.$parent.$el.getBoundingClientRect();
-      const offsetX = 10;
-      const offsetY = 10;
-      const x = origin.x + offsetX;
-      const y = origin.y + offsetY;
-      this.$el.style.left = x + "px";
-      this.$el.style.top = y + "px";
-      console.log(x, y);
-    },
-  },
-};
+// export const position = {
+//   props: {
+//     left: Boolean,
+//     right: Boolean,
+//     center: Boolean,
+//   },
+//   mounted() {
+//     this.setPosition();
+//   },
+//   methods: {
+//     setPosition: function() {
+//       const origin = this.$parent.$el.getBoundingClientRect();
+//       const offsetX = 10;
+//       const offsetY = 10;
+//       const x = origin.x + offsetX;
+//       const y = origin.y + offsetY;
+//       this.$el.style.left = x + "px";
+//       this.$el.style.top = y + "px";
+//       console.log(x, y);
+//     },
+//   },
+// };
 export const breakpoints = {
   data: () => ({
     xs: false,
@@ -38,14 +38,21 @@ export const breakpoints = {
   },
   methods: {
     onResize() {
+      const width = document.documentElement.clientWidth;
       this.xs =
-        document.documentElement.clientWidth <= this.breakpointValue("xs");
+        width >= this.breakpointValue("xs") &&
+        width >= this.breakpointValue("xl");
       this.sm =
-        document.documentElement.clientWidth <= this.breakpointValue("sm");
+        width >= this.breakpointValue("sm") &&
+        width <= this.breakpointValue("xl");
+
       this.md =
-        document.documentElement.clientWidth <= this.breakpointValue("md");
+        width >= this.breakpointValue("md") &&
+        width <= this.breakpointValue("xl");
       this.lg =
-        document.documentElement.clientWidth <= this.breakpointValue("lg");
+        width >= this.breakpointValue("lg") &&
+        width <= this.breakpointValue("xl");
+      this.xl = width >= this.breakpointValue("xl");
     },
     breakpointValue(name) {
       let value = window

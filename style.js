@@ -8,7 +8,7 @@ export const color = {
     this.setText();
   },
   methods: {
-    setColor: function() {
+    setColor: function () {
       if (this.color) {
         const color = `var(--${this.color})`;
         this.$el.style.background = color;
@@ -16,7 +16,7 @@ export const color = {
         return;
       }
     },
-    setText: function() {
+    setText: function () {
       if (this.text) {
         const color = `var(--${this.text})`;
         this.$el.style.color = color;
@@ -30,13 +30,13 @@ export const color = {
 };
 export const elevation = {
   props: {
-    elevation: String,
+    elevation: String | Number,
   },
   mounted() {
     this.setElevation();
   },
   methods: {
-    setElevation: function() {
+    setElevation: function () {
       if (this.elevation) {
         const elevation = `var(--box${this.elevation})`;
         this.$el.style.boxShadow = elevation;
@@ -57,7 +57,7 @@ export const border = {
     this.setBorderWidth();
   },
   methods: {
-    setBorderRadius: function() {
+    setBorderRadius: function () {
       if (this.rounded) {
         const radius = `var(--border-radius)`;
         this.$el.style.borderRadius = radius;
@@ -65,7 +65,7 @@ export const border = {
         return;
       }
     },
-    setBorderWidth: function() {
+    setBorderWidth: function () {
       if (this.border) {
         this.$el.style.borderWidth = `var(--border-width)`;
         this.$el.style.borderStyle = "solid";
@@ -84,12 +84,12 @@ export const dimension = {
     this.setWidth();
   },
   methods: {
-    setHeight: function() {
+    setHeight: function () {
       const height = this.height;
       this.$el.style.minHeight = height;
       this.$el.style.maxHeight = height;
     },
-    setWidth: function() {
+    setWidth: function () {
       const width = this.width;
       this.$el.style.minWidth = width;
       this.$el.style.maxWidth = width;

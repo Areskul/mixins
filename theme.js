@@ -19,7 +19,12 @@ export const metaTheme = {
       fg = window
         .getComputedStyle(this.$root.$el)
         .getPropertyValue("--secondary");
-      return { meta: [{ name: "theme-color", content: fg }] };
+      return {
+        meta: [
+          { name: "theme-color", content: fg },
+          { name: "msapplication-TileColor", content: fg },
+        ],
+      };
     }
   },
 };

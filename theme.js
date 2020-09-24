@@ -12,7 +12,7 @@ export const theme = {
   },
 };
 export const metaTheme = {
-  metaInfo() {
+  metaInfo: function() {
     let fg = "";
     const cond = this.isDark | !this.isDark;
     if (cond) {
@@ -20,9 +20,19 @@ export const metaTheme = {
         .getComputedStyle(this.$root.$el)
         .getPropertyValue("--secondary");
       return {
+        // title: "Agence Web Areskul ",
+        // titleTemplate: "%s",
         meta: [
-          { name: "theme-color", content: fg },
-          { name: "msapplication-TileColor", content: fg },
+          {
+            vmid: "theme-color",
+            name: "theme-color",
+            content: fg,
+          },
+          {
+            vmid: "msapplication-TileColor",
+            name: "msapplication-TileColor",
+            content: fg,
+          },
         ],
       };
     }

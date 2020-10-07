@@ -12,29 +12,49 @@ export const theme = {
   },
 };
 export const metaTheme = {
-  metaInfo: function() {
-    let fg = "";
-    const cond = this.isDark | !this.isDark;
-    if (cond) {
-      fg = window
+  mounted() {
+    this.setMeta();
+  },
+  methods: {
+    getColor: function() {
+      return window
         .getComputedStyle(this.$root.$el)
         .getPropertyValue("--secondary");
-      return {
-        // title: "Agence Web Areskul ",
-        // titleTemplate: "%s",
-        meta: [
-          {
-            vmid: "theme-color",
-            name: "theme-color",
-            content: fg,
-          },
-          {
-            vmid: "msapplication-TileColor",
-            name: "msapplication-TileColor",
-            content: fg,
-          },
-        ],
-      };
-    }
+    },
+    makeMeta: function(metaTags) {
+      metaTags
+        .map((tagDef) => {
+          const tag = document.createElement("meta");
+          Object.keys(tagDef).forEach((key) => {
+            tag.setAttribute(key, tagDef[key]);
+            tag.setAttribute("data-vue-mixins-controlled", "");
+          });
+          return tag;
+        })
+        .forEach((tag) => document.head.appendChild(tag));
+    },
+    setMeta: function() {
+      const fg = this.getColor();
+      const metaTags = [
+        {
+          name: "theme-color",
+          content: fg,
+        },
+        {
+          name: "msapplication-TileColor",
+          content: fg,
+        },
+      ];
+      this.makeMeta(metaTags);
+    },
+    changeMeta: function() {
+      Array.from(document.querySelectorAll("[data-vue-mixins-controlled]")).map(
+        (el) => {
+          console.log("Change meta -> removed old tags");
+          el.parentNode.removeChild(el);
+        }
+      );
+      this.setMeta();
+    },
   },
 };
